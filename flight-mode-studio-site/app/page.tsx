@@ -2,19 +2,6 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import {
-ArrowRight,
-Check,
-Clapperboard,
-Clock3,
-Sparkles,
-Zap,
-BadgeCheck,
-Repeat,
-Megaphone,
-Play,
-Send,
-} from "lucide-react";
 
 export default function Home() {
 return ( <main>
@@ -57,8 +44,8 @@ return ( <main>
     </nav>
   </header>
 
-  {/* HERO SECTION */}
-  <section id="top" className="mx-auto max-w-7xl px-5 py-24">
+  {/* HERO */}
+  <section id="top" className="mx-auto max-w-7xl px-5 py-24 text-center">
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
@@ -71,7 +58,7 @@ return ( <main>
         High-quality short-form videos delivered monthly.
       </p>
 
-      <div className="mt-6 flex gap-4">
+      <div className="mt-6 flex justify-center gap-4">
         <a
           href="#pricing"
           className="rounded-full border-2 border-ink bg-butter px-6 py-3 font-black"
@@ -89,13 +76,12 @@ return ( <main>
   </section>
 
   {/* FOOTER */}
-  <footer className="border-t-2 border-ink bg-ink px-5 py-10 text-paper">
-    <div className="mx-auto max-w-7xl">
-      <p className="font-black">Flight Mode Studio © 2026</p>
-    </div>
+  <footer className="border-t-2 border-ink bg-ink px-5 py-10 text-paper text-center">
+    <p className="font-black">Flight Mode Studio © 2026</p>
   </footer>
 
 </main>
+```
 
 );
 }
