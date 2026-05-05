@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-// Types
 interface CardProps {
   label?: string;
   price: string;
@@ -19,16 +18,9 @@ interface CardProps {
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#fff7e8] text-black">
-      {/* HEADER */}
       <Header />
-
-      {/* HERO */}
       <HeroSection />
-
-      {/* PRICING */}
       <PricingSection />
-
-      {/* FOOTER */}
       <Footer />
     </main>
   );
@@ -72,7 +64,30 @@ function HeroSection() {
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ durat
+        transition={{ duration: 1 }}
+      >
+        {/* Hero content */}
+      </motion.div>
+    </section>
+  );
+}
+
+function PricingSection() {
+  return (
+    <section id="pricing" className="mx-auto max-w-7xl px-5 py-24 text-center">
+      {/* Pricing content */}
+    </section>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="bg-black text-white">
+      {/* Footer content */}
+    </footer>
+  );
+}
+
 
 
 
