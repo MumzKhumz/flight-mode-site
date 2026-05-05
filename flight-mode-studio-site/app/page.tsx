@@ -1,6 +1,5 @@
 "use client";
-
-import { motion } from "framer-motion";
+import Image from "next/image";
 import {
   ArrowRight,
   Check,
@@ -86,7 +85,15 @@ export default function Home() {
       <header className="sticky top-0 z-50 border-b-2 border-ink bg-cream/90 backdrop-blur">
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
           <a href="#top" className="flex items-center gap-3 font-black">
-            <span className="grid h-10 w-10 place-items-center rounded-full border-2 border-ink bg-clay text-paper shadow-hard">FM</span>
+  <Image
+    src="/logo.png"
+    alt="Flight Mode Studio"
+    width={50}
+    height={50}
+    className="rounded-full border-2 border-ink shadow-hard"
+  />
+  <span>Flight Mode Studio</span>
+</a>
             <span>Flight Mode Studio</span>
           </a>
           <div className="hidden items-center gap-6 text-sm font-bold md:flex">
