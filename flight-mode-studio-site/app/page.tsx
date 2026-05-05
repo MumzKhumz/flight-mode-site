@@ -159,8 +159,6 @@ return ( <main>
   </footer>
 
 </main>
-```
-
 );
 }
 
