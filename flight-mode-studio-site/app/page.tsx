@@ -166,7 +166,7 @@ export default function Home() {
             <article className="price-card price-card--grad-yellow">
               <h2 className="price-card__title">Starter</h2>
               <p className="price-card__subtitle">Best for getting consistent</p>
-              <div className="price-card__price">R2,500<span>/mo</span></div>
+              <div className="price-card__price">R3,000<span>/mo</span></div>
               <div className="price-card__pill">1 video / month</div>
               <ul className="price-card__features">
                 <li>AI-powered production</li>
