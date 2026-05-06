@@ -49,4 +49,30 @@ body {
 .price-card--yellow {
   background:
     radial-gradient(circle at 90% 8%, rgba(255, 0, 140, 0.22), transparent 18%),
-    radia
+    radial-gradient(circle at 8% 98%, rgba(153, 0, 255, 0.20), transparent 22%),
+    linear-gradient(145deg, #ffe600, #ffd739);
+}
+
+.price-card--featured {
+  transform: translateY(-24px);
+}
+
+.price-card__badge {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #f06543;
+  color: #fff;
+  padding: 10px 30px;
+  border-radius: 999px;
+  border: 2px solid #111;
+  font-size: 14px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.price-card__title {
+  font-size: 52px;
+  font-weight: 800;
+  letter-spacing:
