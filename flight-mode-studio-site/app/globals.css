@@ -1,125 +1,226 @@
-@import "tailwindcss";
+<section class="pricing-section">
+  <article class="price-card cream">
+    <h2>Starter</h2>
+    <p class="subtitle">Best for getting consistent</p>
 
-:root {
-  --bg-muted: #efe8ea;
-  --accent-yellow-1: #ffd200;
-  --accent-yellow-2: #ff8c00;
-  --accent-yellow-3: #e65a00;
+    <div class="price">R3,000 <span>/mo</span></div>
+    <div class="pill">1 video / month</div>
 
-  --accent-blue-1: #0b3bff;
-  --accent-blue-2: #6be0ff;
-  --accent-blue-3: #ffdf6b;
+    <ul>
+      <li>AI-powered production</li>
+      <li>Human-edited final cut</li>
+      <li>3–5 day delivery</li>
+      <li>Basic revisions</li>
+    </ul>
 
-  --accent-orange-1: #ff5a00;
-  --accent-orange-2: #ff2d7b;
-  --accent-orange-3: #ffb13b;
+    <div class="actions">
+      <button class="primary-btn">Choose Starter</button>
+      <a href="https://calendly.com/fms-meet" target="_blank" rel="noopener noreferrer" class="secondary-btn">
+        Book a call
+      </a>
+    </div>
+  </article>
 
-  --card-radius: 24px;
-  --card-padding: 36px;
-  --card-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
-  --text-strong: #0b0b0b;
-}
+  <article class="price-card yellow featured">
+    <div class="badge">MOST POPULAR</div>
 
-body {
-  margin: 0;
-  background: #fff7e8;
-  color: #000;
-}
+    <h2>Growth</h2>
+    <p class="subtitle">Most popular for growing brands</p>
 
-.pricing-card {
-  border-radius: var(--card-radius);
-  padding: var(--card-padding);
-  box-shadow: var(--card-shadow);
-  overflow: hidden;
-  position: relative;
-  min-height: 420px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-size: cover;
-  background-position: center;
-}
+    <div class="price">R6,000 <span>/mo</span></div>
+    <div class="pill">3 videos / month</div>
 
-.card--yellow {
-  background-image:
-    linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.06) 100%),
-    radial-gradient(1200px 400px at 10% 20%, var(--accent-yellow-2) 0%, var(--accent-yellow-1) 30%, transparent 60%),
-    linear-gradient(140deg, #fff2bf 0%, #ffd200 15%, #ff8c00 60%, #e65a00 100%);
-  color: var(--text-strong);
-}
+    <ul>
+      <li>Social + ad-ready videos</li>
+      <li>Priority turnaround</li>
+      <li>Performance-focused edits</li>
+      <li>Creative direction included</li>
+    </ul>
 
-.card--blue {
-  background-image:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.03) 0%, rgba(0, 0, 0, 0.06) 100%),
-    radial-gradient(400px 300px at 20% 30%, #ffdf6b 0%, rgba(107, 224, 255, 0.85) 30%, transparent 60%),
-    linear-gradient(180deg, var(--accent-blue-1) 0%, #2b00ff 40%, #3a8bff 100%);
-  color: white;
-}
+    <div class="actions">
+      <button class="primary-btn">Choose Growth</button>
+      <a href="https://calendly.com/fms-meet" target="_blank" rel="noopener noreferrer" class="secondary-btn">
+        Book a call
+      </a>
+    </div>
+  </article>
 
-.card--orange {
-  background-image:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.03) 0%, rgba(0, 0, 0, 0.06) 100%),
-    radial-gradient(600px 300px at 80% 10%, #ff2d7b 0%, rgba(255, 120, 37, 0.7) 30%, transparent 60%),
-    linear-gradient(180deg, var(--accent-orange-1) 0%, var(--accent-orange-2) 45%, var(--accent-orange-3) 100%);
-  color: white;
-}
+  <article class="price-card cream">
+    <h2>Scale</h2>
+    <p class="subtitle">For brands ready to push volume</p>
 
-.pricing-card h3 {
-  margin: 0 0 8px;
-  font-size: 1.8rem;
-  font-weight: 700;
-}
+    <div class="price">R10,000 <span>/mo</span></div>
+    <div class="pill">6 videos / month</div>
 
-.pricing-card .price {
-  font-size: 3rem;
-  font-weight: 800;
-  margin: 8px 0 20px;
-}
+    <ul>
+      <li>Advanced edits + variations</li>
+      <li>Fastest turnaround</li>
+      <li>Campaign-ready creatives</li>
+      <li>Monthly creative planning</li>
+    </ul>
 
-.pricing-card p {
-  margin: 0 0 20px;
-  line-height: 1.4;
-}
+    <div class="actions">
+      <button class="primary-btn">Choose Scale</button>
+      <a href="https://calendly.com/fms-meet" target="_blank" rel="noopener noreferrer" class="secondary-btn">
+        Book a call
+      </a>
+    </div>
+  </article>
+</section>
 
-.pricing-card .btn {
-  display: inline-block;
-  padding: 12px 22px;
-  border-radius: 999px;
-  font-weight: 700;
-  text-decoration: none;
-  transition: transform 0.12s ease, box-shadow 0.12s ease;
-}
-
-.card--yellow .btn {
-  background: rgba(0, 0, 0, 0.75);
-  color: white;
-}
-
-.card--blue .btn,
-.card--orange .btn {
-  background: rgba(255, 255, 255, 0.15);
-  color: white;
-  backdrop-filter: blur(4px);
-}
-
-.pricing-card .btn:hover {
-  transform: translateY(-3px);
-}
-
-.pricing-card .panel {
-  background: rgba(0, 0, 0, 0.08);
-  padding: 14px;
-  border-radius: 12px;
-  max-width: 320px;
-}
-
-@media (max-width: 900px) {
-  .pricing-card {
-    min-height: 360px;
-    padding: 24px;
+<style>
+  body {
+    margin: 0;
+    background: #ece7e7;
+    font-family: Inter, Arial, sans-serif;
+    color: #111;
   }
 
-  .pricing-card .price {
-    font-size: 2.4rem;
+  .pricing-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    padding: 60px;
   }
-}
+
+  .price-card {
+    position: relative;
+    border-radius: 34px;
+    padding: 48px;
+    min-height: 640px;
+    box-shadow: 0 24px 60px rgba(0,0,0,.08);
+    box-sizing: border-box;
+    overflow: visible;
+  }
+
+  .cream {
+    background:
+      radial-gradient(circle at 90% 10%, rgba(255,140,0,.18), transparent 20%),
+      radial-gradient(circle at 90% 95%, rgba(153,0,255,.18), transparent 24%),
+      linear-gradient(145deg, #fff9f0, #f4ebdc);
+  }
+
+  .yellow {
+    background:
+      radial-gradient(circle at 90% 8%, rgba(255,0,140,.22), transparent 18%),
+      radial-gradient(circle at 8% 98%, rgba(153,0,255,.2), transparent 22%),
+      linear-gradient(145deg, #ffe600, #ffd739);
+  }
+
+  .featured {
+    transform: translateY(-24px);
+  }
+
+  .badge {
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #f06543;
+    color: white;
+    padding: 10px 30px;
+    border-radius: 999px;
+    border: 2px solid #111;
+    font-size: 14px;
+    font-weight: 800;
+  }
+
+  h2 {
+    margin: 0 0 12px;
+    font-size: 52px;
+    letter-spacing: -0.05em;
+  }
+
+  .subtitle {
+    margin: 0 0 54px;
+    font-size: 22px;
+    color: rgba(0,0,0,.62);
+    font-weight: 700;
+  }
+
+  .price {
+    font-size: 78px;
+    font-weight: 900;
+    letter-spacing: -0.06em;
+    margin-bottom: 30px;
+  }
+
+  .price span {
+    font-size: 26px;
+  }
+
+  .pill {
+    border: 3px solid #111;
+    border-radius: 22px;
+    padding: 20px 24px;
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 42px;
+    background: rgba(255,255,255,.4);
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 48px;
+    display: grid;
+    gap: 22px;
+  }
+
+  li {
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  li::before {
+    content: "✓";
+    margin-right: 16px;
+  }
+
+  .actions {
+    display: grid;
+    gap: 16px;
+    position: absolute;
+    left: 48px;
+    right: 48px;
+    bottom: 48px;
+  }
+
+  .primary-btn,
+  .secondary-btn {
+    border-radius: 999px;
+    padding: 22px;
+    font-size: 22px;
+    font-weight: 800;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .primary-btn {
+    border: 0;
+    background: #111;
+    color: white;
+  }
+
+  .secondary-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,.5);
+    border: 2px solid rgba(0,0,0,.1);
+    backdrop-filter: blur(10px);
+    color: #111;
+  }
+
+  @media (max-width: 1100px) {
+    .pricing-section {
+      grid-template-columns: 1fr;
+      padding: 28px;
+    }
+
+    .featured {
+      transform: none;
+    }
+  }
+</style>
