@@ -1,4 +1,3 @@
-import "./globals.css";
 
 export const metadata = {
   title: "Flight Mode Studio — AI Content for Small Businesses",
