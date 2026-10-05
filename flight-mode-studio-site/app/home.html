@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flight Mode Studio — AI Content for Small Businesses</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --white: #ffffff;
+    --off-white: #f0ead6;
+    --mid-gray: #8a8a8a;
+    --light-gray: #e2d9c4;
+    --accent: #c84b1a;
+    --accent-dark: #a83a10;
+    --accent-green: #1a4a3a;
+    --text-muted: #5a5a5a;
+    --card-border: #ddd4be;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--black);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(26,74,58,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 0 40px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    color: var(--white);
+    letter-spacing: -0.5px;
+  }
+
+  .nav-logo span { color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--white); }
+
+  .nav-cta {
+    background: var(--accent);
+    color: var(--white) !important;
+    font-weight: 500 !important;
+    padding: 10px 22px;
+    border-radius: 100px;
+    transition: background 0.2s, transform 0.15s !important;
+  }
+
+  .nav-cta:hover { background: var(--accent-dark) !important; transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    background: var(--accent-green);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 100px 40px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(200,75,26,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 32px;
+  }
+
+  .hero-label::before {
+    content: '✦';
+    font-size: 10px;
+  }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(32px, 4.5vw, 62px);
+    line-height: 1.0;
+    letter-spacing: -2px;
+    color: var(--white);
+    max-width: 900px;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    color: rgba(255,255,255,0.6);
+    max-width: 520px;
+    margin-bottom: 32px;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 64px;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: var(--white);
+    font-weight: 600;
+    font-size: 15px;
+    padding: 16px 32px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--white);
+    font-weight: 400;
+    font-size: 15px;
+    padding: 16px 32px;
+    border-radius: 100px;
+    border: 1px solid rgba(255,255,255,0.2);
+    text-decoration: none;
+    transition: border-color 0.2s, transform 0.15s;
+  }
+
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.5); transform: translateY(-2px); }
+
+  .hero-trust {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .trust-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    font-weight: 400;
+  }
+
+  .trust-pill::before {
+    content: '✓';
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 12px;
+  }
+
+  /* TICKER */
+  .ticker {
+    background: var(--accent);
+    padding: 14px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .ticker-inner {
+    display: inline-block;
+    animation: ticker 20s linear infinite;
+  }
+
+  .ticker-inner span {
+    display: inline-block;
+    padding: 0 32px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--black);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .ticker-inner span::after {
+    content: '·';
+    margin-left: 32px;
+  }
+
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* BRANDS */
+  .brands {
+    background: var(--off-white);
+    padding: 48px 40px;
+    text-align: center;
+  }
+
+  .brands-label {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+    margin-bottom: 28px;
+  }
+
+  .brands-logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 56px;
+    flex-wrap: wrap;
+  }
+
+  .brand-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: rgba(0,0,0,0.25);
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+  }
+
+  /* SECTIONS */
+  section { padding: 100px 40px; }
+
+  .section-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(36px, 5vw, 60px);
+    line-height: 1.05;
+    letter-spacing: -1.5px;
+    margin-bottom: 24px;
+  }
+
+  h2 em {
+    font-style: italic;
+    color: var(--mid-gray);
+  }
+
+  .max-w { max-width: 1100px; margin: 0 auto; }
+
+  /* WHY EXISTS */
+  .why {
+    background: var(--white);
+    border-top: 1px solid var(--light-gray);
+  }
+
+  .why-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .why-body {
+    font-size: 17px;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+
+  .why-body p + p { margin-top: 20px; }
+
+  /* HOW IT WORKS */
+  .how { background: var(--off-white); }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    margin-top: 60px;
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .step {
+    background: var(--white);
+    padding: 40px 32px;
+    position: relative;
+    transition: background 0.2s;
+  }
+
+  .step:hover { background: var(--off-white); }
+
+  .step-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--mid-gray);
+    margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+
+  .step h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+
+  .step p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  .step-icon {
+    width: 40px; height: 40px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  /* FEATURES */
+  .features { background: var(--accent-green); }
+
+  .features h2 { color: var(--white); }
+
+  .features h2 em { color: rgba(255,255,255,0.35); }
+
+  .features .section-tag { color: rgba(255,255,255,0.35); }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 60px;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .feat {
+    background: rgba(255,255,255,0.03);
+    padding: 40px 32px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    transition: background 0.2s;
+  }
+
+  .feat:hover { background: rgba(255,255,255,0.06); }
+
+  .feat-icon {
+    font-size: 24px;
+    margin-bottom: 20px;
+    display: block;
+    color: var(--white);
+  }
+
+  .feat-icon.accent { color: var(--accent); }
+
+  .feat h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 10px;
+    letter-spacing: -0.3px;
+  }
+
+  .feat p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.7;
+  }
+
+  /* PRICING */
+  .pricing { background: var(--white); border-top: 1px solid var(--light-gray); }
+
+  .pricing-sub {
+    font-size: 17px;
+    color: var(--text-muted);
+    margin-bottom: 60px;
+    max-width: 480px;
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .plan {
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 40px 36px;
+    position: relative;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+
+  .plan:hover { transform: translateY(-4px); border-color: #c8c7c2; }
+
+  .plan.featured {
+    background: var(--accent-green);
+    border-color: var(--accent-green);
+    color: var(--white);
+  }
+
+  .plan.featured:hover { border-color: var(--accent); }
+
+  .popular-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--white);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 100px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .plan-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 4px;
+    letter-spacing: -0.5px;
+  }
+
+  .plan-tagline {
+    font-size: 13px;
+    color: var(--mid-gray);
+    margin-bottom: 28px;
+  }
+
+  .plan.featured .plan-tagline { color: rgba(255,255,255,0.45); }
+
+  .plan-price {
+    font-family: 'Syne', sans-serif;
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: -2px;
+    margin-bottom: 4px;
+    line-height: 1;
+  }
+
+  .plan-price span {
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0;
+  }
+
+  .plan-videos {
+    font-size: 13px;
+    color: var(--mid-gray);
+    margin-bottom: 32px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--light-gray);
+  }
+
+  .plan.featured .plan-videos { color: rgba(255,255,255,0.4); border-color: rgba(255,255,255,0.1); }
+
+  .plan-features {
+    list-style: none;
+    margin-bottom: 36px;
+  }
+
+  .plan-features li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--light-gray);
+    color: var(--text-muted);
+  }
+
+  .plan.featured .plan-features li {
+    border-color: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.65);
+  }
+
+  .plan-features li::before {
+    content: '✓';
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  .plan-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 16px;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .plan-btn-outline {
+    border: 1.5px solid var(--black);
+    color: var(--black);
+    background: transparent;
+  }
+
+  .plan-btn-outline:hover { background: var(--black); color: var(--white); }
+
+  .plan-btn-filled {
+    background: var(--accent);
+    color: var(--white);
+    border: none;
+  }
+
+  .plan-btn-filled:hover { background: var(--accent-dark); transform: translateY(-1px); }
+
+  /* CAMPAIGN */
+  .campaign-card {
+    margin-top: 40px;
+    background: var(--off-white);
+    border: 1px solid var(--light-gray);
+    border-radius: 20px;
+    padding: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+    max-width: 1100px;
+    margin: 40px auto 0;
+  }
+
+  .campaign-left h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+
+  .campaign-left p {
+    color: var(--text-muted);
+    font-size: 15px;
+  }
+
+  .campaign-price {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--mid-gray);
+    letter-spacing: -0.5px;
+  }
+
+  /* WHO */
+  .who { background: var(--off-white); border-top: 1px solid var(--light-gray); }
+
+  .who-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 40px;
+    max-width: 1100px;
+  }
+
+  .who-tag {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 14px 28px;
+    border-radius: 100px;
+    letter-spacing: -0.3px;
+  }
+
+  .who-tag:nth-child(1) { background: var(--black); color: var(--white); }
+  .who-tag:nth-child(2) { background: var(--accent); color: var(--black); }
+  .who-tag:nth-child(3) { background: var(--white); color: var(--black); border: 1.5px solid var(--light-gray); }
+  .who-tag:nth-child(4) { background: var(--white); color: var(--black); border: 1.5px solid var(--light-gray); }
+  .who-tag:nth-child(5) { background: #1a1a1a; color: rgba(255,255,255,0.6); }
+
+  /* FAQ */
+  .faq { background: var(--white); border-top: 1px solid var(--light-gray); }
+
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 60px;
+    border: 1px solid var(--light-gray);
+    border-radius: 20px;
+    overflow: hidden;
+    max-width: 1100px;
+    margin: 60px auto 0;
+  }
+
+  .faq-item {
+    background: var(--white);
+    padding: 36px 32px;
+    transition: background 0.2s;
+    cursor: pointer;
+  }
+
+  .faq-item:hover { background: var(--off-white); }
+
+  .faq-q {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    letter-spacing: -0.3px;
+  }
+
+  .faq-a {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* CTA FINAL */
+  .final-cta {
+    background: var(--accent-green);
+    padding: 120px 40px;
+    text-align: center;
+  }
+
+  .final-cta h2 {
+    color: var(--white);
+    font-size: clamp(40px, 6vw, 80px);
+    margin-bottom: 20px;
+  }
+
+  .final-cta h2 em { color: var(--accent); }
+
+  .final-cta p {
+    color: rgba(255,255,255,0.5);
+    font-size: 17px;
+    max-width: 500px;
+    margin: 0 auto 48px;
+    line-height: 1.7;
+  }
+
+  .final-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--accent-green);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 32px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    color: var(--white);
+  }
+
+  .footer-logo span { color: var(--accent); }
+
+  .footer-copy {
+    font-size: 13px;
+    color: rgba(255,255,255,0.35);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    section { padding: 64px 20px; }
+    .hero { padding: 100px 20px 64px; }
+    .why-inner, .steps-grid, .features-grid, .pricing-grid, .faq-grid {
+      grid-template-columns: 1fr;
+    }
+    .campaign-card { padding: 28px; }
+    footer { padding: 24px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">FMS<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#how-it-works">How it works</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="/work/">Work</a></li>
+    <li><a href="https://calendly.com/fms-meet" class="nav-cta">Get content</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-label">AI Content Studio for Small Businesses</div>
+  <h1>Big brand content,<br>small business <em>pricing.</em></h1>
+  <p class="hero-sub">High-quality short-form videos for small businesses and growing brands — delivered every month using AI-powered production.</p>
+  <div class="hero-actions">
+    <a href="#pricing" class="btn-primary">View plans →</a>
+    <a href="https://calendly.com/fms-meet" class="btn-ghost">Book a free call</a>
+  </div>
+  <div class="hero-trust">
+    <div class="trust-pill">No big shoots</div>
+    <div class="trust-pill">3–5 day delivery</div>
+    <div class="trust-pill">Social + ads ready</div>
+    <div class="trust-pill">Cancel or pause anytime</div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>3–5 Day Delivery</span>
+    <span>Small Business Friendly</span>
+    <span>Social + Ads Ready</span>
+    <span>AI-Powered</span>
+    <span>Short-Form Video</span>
+    <span>Human-Polished</span>
+    <span>No Shoot Days</span>
+    <span>Monthly Plans</span>
+    <span>3–5 Day Delivery</span>
+    <span>Small Business Friendly</span>
+    <span>Social + Ads Ready</span>
+    <span>AI-Powered</span>
+    <span>Short-Form Video</span>
+    <span>Human-Polished</span>
+    <span>No Shoot Days</span>
+    <span>Monthly Plans</span>
+  </div>
+</div>
+
+<!-- BRANDS -->
+<div class="brands">
+  <p class="brands-label">Brands we've worked with</p>
+  <div class="brands-logos">
+    <div class="brand-name">Nike</div>
+    <div class="brand-name">Sportscene</div>
+    <div class="brand-name">DJI</div>
+    <div class="brand-name">Fitbit</div>
+  </div>
+</div>
+
+<!-- WHY EXISTS -->
+<section class="why" id="how-it-works">
+  <div class="why-inner">
+    <div>
+      <span class="section-tag">Why it exists</span>
+      <h2>Content should not feel like a <em>full production.</em></h2>
+    </div>
+    <div class="why-body">
+      <p>Traditional shoots are expensive, slow, and hard to repeat every month. Most small businesses can't afford a production team — or the weeks it takes to see results.</p>
+      <p>Flight Mode Studio gives your brand a simple monthly content engine: brief it, we create it, you post it. No shoot days. No waiting. No content panic.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div class="max-w">
+    <span class="section-tag">How it works</span>
+    <h2>A ridiculously <em>simple</em> way to<br>get content every month.</h2>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">Step 01</div>
+        <div class="step-icon">★</div>
+        <h3>Subscribe</h3>
+        <p>Choose the monthly plan that fits your business. Start small, scale when you're ready.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">Step 02</div>
+        <div class="step-icon">✍</div>
+        <h3>Send your brief</h3>
+        <p>Share your idea, product, promo, or campaign angle. Simple and quick.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">Step 03</div>
+        <div class="step-icon">⚡</div>
+        <h3>We create</h3>
+        <p>AI-assisted production, editing, optimisation, and human polish. All done for you.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">Step 04</div>
+        <div class="step-icon">→</div>
+        <h3>Post &amp; grow</h3>
+        <p>Receive ready-to-use videos for socials and ads. Built for Instagram, TikTok, and Facebook.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="max-w">
+    <span class="section-tag">Why small businesses love us</span>
+    <h2 style="color: var(--white);">Made for brands that need <em>speed,<br>volume,</em> and results.</h2>
+    <div class="features-grid">
+      <div class="feat">
+        <span class="feat-icon">✦</span>
+        <h3>Affordable</h3>
+        <p>No massive shoot days or R20k+ production bills. Real content at small business pricing.</p>
+      </div>
+      <div class="feat">
+        <span class="feat-icon">◷</span>
+        <h3>Fast turnaround</h3>
+        <p>Get ready-to-post content in 3–5 days, not weeks. Stop waiting and start posting.</p>
+      </div>
+      <div class="feat">
+        <span class="feat-icon">↻</span>
+        <h3>Always-on output</h3>
+        <p>Stay visible every month with consistent videos. Build a rhythm your audience can see.</p>
+      </div>
+      <div class="feat">
+        <span class="feat-icon">◁</span>
+        <h3>Built for social</h3>
+        <p>Made for Instagram, TikTok, Facebook, and ads. Every format, every platform.</p>
+      </div>
+      <div class="feat">
+        <span class="feat-icon accent">⚡</span>
+        <h3>AI-powered speed</h3>
+        <p>More content, faster production, lower cost. The power of AI with human quality control.</p>
+      </div>
+      <div class="feat">
+        <span class="feat-icon">✓</span>
+        <h3>Human polish</h3>
+        <p>AI-assisted, edited and quality-checked by humans. The best of both worlds.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="max-w">
+    <span class="section-tag">Pricing</span>
+    <h2>Simple monthly plans.</h2>
+    <p class="pricing-sub">Start small, stay consistent, scale when you are ready.</p>
+    <div class="pricing-grid">
+
+      <!-- Starter -->
+      <div class="plan">
+        <div class="plan-name">Starter</div>
+        <div class="plan-tagline">Best for getting consistent</div>
+        <div class="plan-price">R3,000<span>/mo</span></div>
+        <div class="plan-videos">1 video per month</div>
+        <ul class="plan-features">
+          <li>AI-powered production</li>
+          <li>Human-edited final cut</li>
+          <li>3–5 day delivery</li>
+          <li>Basic revisions</li>
+        </ul>
+        <a href="/api/checkout/?plan=starter" class="plan-btn plan-btn-outline">Choose Starter</a>
+      </div>
+
+      <!-- Growth -->
+      <div class="plan featured">
+        <div class="popular-badge">Most popular</div>
+        <div class="plan-name">Growth</div>
+        <div class="plan-tagline">Most popular for growing brands</div>
+        <div class="plan-price">R6,000<span>/mo</span></div>
+        <div class="plan-videos">3 videos per month</div>
+        <ul class="plan-features">
+          <li>Social + ad-ready videos</li>
+          <li>Priority turnaround</li>
+          <li>Performance-focused edits</li>
+          <li>Creative direction included</li>
+        </ul>
+        <a href="/api/checkout/?plan=growth" class="plan-btn plan-btn-filled">Choose Growth</a>
+      </div>
+
+      <!-- Scale -->
+      <div class="plan">
+        <div class="plan-name">Scale</div>
+        <div class="plan-tagline">For brands ready to push volume</div>
+        <div class="plan-price">R10,000<span>/mo</span></div>
+        <div class="plan-videos">6 videos per month</div>
+        <ul class="plan-features">
+          <li>Advanced edits + variations</li>
+          <li>Fastest turnaround</li>
+          <li>Campaign-ready creatives</li>
+          <li>Monthly creative planning</li>
+        </ul>
+        <a href="/api/checkout/?plan=scale" class="plan-btn plan-btn-outline">Choose Scale</a>
+      </div>
+
+    </div>
+
+    <!-- Campaign card -->
+    <div class="campaign-card">
+      <div class="campaign-left">
+        <h3>Need a launch push?</h3>
+        <p>Campaign bursts available for product drops, paid ads, launches, and seasonal content.</p>
+      </div>
+      <div class="campaign-price">R30k – R60k</div>
+      <a href="https://calendly.com/fms-meet" class="btn-primary">Talk to us →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHO -->
+<section class="who">
+  <div class="max-w">
+    <span class="section-tag">Who it is for</span>
+    <h2>For brands that need to<br><em>show up more often.</em></h2>
+    <div class="who-grid">
+      <div class="who-tag">Small businesses</div>
+      <div class="who-tag">E-commerce</div>
+      <div class="who-tag">Coaches</div>
+      <div class="who-tag">Creators</div>
+      <div class="who-tag">Growing brands</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="max-w">
+    <span class="section-tag">FAQ</span>
+    <h2>Questions before <em>takeoff?</em></h2>
+  </div>
+  <div class="faq-grid">
+    <div class="faq-item">
+      <div class="faq-q">Who is this for?</div>
+      <div class="faq-a">Flight Mode Studio is built for small businesses, e-commerce brands, coaches, creators, and growing brands who need consistent video content without the cost of traditional production.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How fast do I get my videos?</div>
+      <div class="faq-a">Most videos are delivered within 3–5 business days of receiving your brief. No long waits, no scheduling chaos.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is everything AI-generated?</div>
+      <div class="faq-a">No. We use AI to speed up production, but every video is reviewed, edited, and polished by a human before delivery. The best of both worlds.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I use the videos for ads?</div>
+      <div class="faq-a">Yes — all plans include ad-ready formats optimised for paid social on Instagram, TikTok, and Facebook.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I request a bigger campaign?</div>
+      <div class="faq-a">Yes. Campaign bursts are available for product launches, paid ad campaigns, and seasonal content. Pricing starts at R30k.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I cancel or pause?</div>
+      <div class="faq-a">Absolutely. You can pause or cancel your subscription at any time with no penalty. Total flexibility, no lock-in.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <h2>Let's turn your business into<br>a <em>content machine.</em></h2>
+  <p>Get consistent, high-quality videos without expensive shoots, long delays, or content panic.</p>
+  <div class="final-actions">
+    <a href="https://calendly.com/fms-meet" class="btn-primary" style="font-size: 16px; padding: 18px 40px;">Book a free call →</a>
+    <a href="mailto:hello@flightmodestudio.co.za" class="btn-ghost" style="font-size: 16px; padding: 18px 40px;">✈ Email us</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Flight Mode Studio<span>.</span></div>
+  <div class="footer-copy">© Flight Mode Studio — Affordable, high-quality content for small businesses and growing brands.</div>
+</footer>
+
+
+
+</body></html>

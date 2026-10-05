@@ -1,0 +1,68 @@
+import { NextRequest, NextResponse } from "next/server";
+
+// Monthly plan prices in cents (ZAR). Kept on the server so the amount
+// can't be changed from the browser.
+const PLANS: Record<string, { name: string; amount: number }> = {
+  starter: { name: "Starter plan (1 video / month)", amount: 300000 },
+  growth: { name: "Growth plan (3 videos / month)", amount: 600000 },
+  scale: { name: "Scale plan (6 videos / month)", amount: 1000000 },
+};
+
+export const dynamic = "force-dynamic";
+
+// Creates a Yoco checkout for the chosen plan and sends the visitor to
+// Yoco's hosted payment page.
+export async function GET(req: NextRequest) {
+  const plan = PLANS[req.nextUrl.searchParams.get("plan") ?? ""];
+  const secretKey = process.env.YOCO_SECRET_KEY;
+  const origin = req.nextUrl.origin;
+
+  // An unknown plan goes back to the pricing section.
+  if (!plan) {
+    return NextResponse.redirect(new URL("/#pricing", origin), 303);
+  }
+
+  const failed = NextResponse.redirect(new URL("/payment/failed/", origin), 303);
+
+  if (!secretKey) {
+    console.error("YOCO_SECRET_KEY is not set; checkout is unavailable");
+    return failed;
+  }
+
+  let res: Response;
+  try {
+    res = await fetch("https://payments.yoco.com/api/checkouts", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${secretKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        amount: plan.amount,
+        currency: "ZAR",
+        successUrl: `${origin}/payment/success/`,
+        cancelUrl: `${origin}/#pricing`,
+        failureUrl: `${origin}/payment/failed/`,
+        metadata: { plan: plan.name },
+        lineItems: [
+          {
+            displayName: plan.name,
+            quantity: 1,
+            pricingDetails: { price: plan.amount },
+          },
+        ],
+      }),
+    });
+  } catch (err) {
+    console.error("Yoco checkout request failed", err);
+    return failed;
+  }
+
+  if (!res.ok) {
+    console.error("Yoco checkout failed", res.status, await res.text());
+    return failed;
+  }
+
+  const { redirectUrl } = await res.json();
+  return NextResponse.redirect(redirectUrl, 303);
+}
