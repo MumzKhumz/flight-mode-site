@@ -20,6 +20,7 @@ export async function GET(req: NextRequest) {
 
   // Until Yoco is set up (or for an unknown plan), fall back to booking a call.
   if (!plan || !secretKey) {
+    if (!secretKey) console.warn("YOCO_SECRET_KEY is not set; sending checkout to Calendly");
     return NextResponse.redirect(CALENDLY, 303);
   }
 
