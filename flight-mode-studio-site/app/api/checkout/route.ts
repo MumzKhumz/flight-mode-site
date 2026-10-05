@@ -8,8 +8,6 @@ const PLANS: Record<string, { name: string; amount: number }> = {
   scale: { name: "Scale plan (6 videos / month)", amount: 1000000 },
 };
 
-const CALENDLY = "https://calendly.com/fms-meet";
-
 export const dynamic = "force-dynamic";
 
 // Creates a Yoco checkout for the chosen plan and sends the visitor to
@@ -17,15 +15,19 @@ export const dynamic = "force-dynamic";
 export async function GET(req: NextRequest) {
   const plan = PLANS[req.nextUrl.searchParams.get("plan") ?? ""];
   const secretKey = process.env.YOCO_SECRET_KEY;
+  const origin = req.nextUrl.origin;
 
-  // Until Yoco is set up (or for an unknown plan), fall back to booking a call.
-  if (!plan || !secretKey) {
-    if (!secretKey) console.warn("YOCO_SECRET_KEY is not set; sending checkout to Calendly");
-    return NextResponse.redirect(CALENDLY, 303);
+  // An unknown plan goes back to the pricing section.
+  if (!plan) {
+    return NextResponse.redirect(new URL("/#pricing", origin), 303);
   }
 
-  const origin = req.nextUrl.origin;
   const failed = NextResponse.redirect(new URL("/payment/failed/", origin), 303);
+
+  if (!secretKey) {
+    console.error("YOCO_SECRET_KEY is not set; checkout is unavailable");
+    return failed;
+  }
 
   let res: Response;
   try {
