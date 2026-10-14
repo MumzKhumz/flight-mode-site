@@ -13,7 +13,8 @@ export const dynamic = "force-dynamic";
 // Creates a Yoco checkout for the chosen plan and sends the visitor to
 // Yoco's hosted payment page.
 export async function GET(req: NextRequest) {
-  const plan = PLANS[req.nextUrl.searchParams.get("plan") ?? ""];
+  const planKey = req.nextUrl.searchParams.get("plan") ?? "";
+  const plan = Object.hasOwn(PLANS, planKey) ? PLANS[planKey] : undefined;
   const secretKey = process.env.YOCO_SECRET_KEY;
   const origin = req.nextUrl.origin;
 
@@ -40,7 +41,8 @@ export async function GET(req: NextRequest) {
       body: JSON.stringify({
         amount: plan.amount,
         currency: "ZAR",
-        successUrl: `${origin}/payment/success/`,
+        // plan and ref let the success page report the sale to Google Ads once.
+        successUrl: `${origin}/payment/success/?plan=${planKey}&ref=${crypto.randomUUID()}`,
         cancelUrl: `${origin}/#pricing`,
         failureUrl: `${origin}/payment/failed/`,
         metadata: { plan: plan.name },

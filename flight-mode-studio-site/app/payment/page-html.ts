@@ -18,7 +18,8 @@ export function paymentPage(title: string, heading: string, body: string, cta: {
   a.btn { display: inline-flex; align-self: flex-start; background: #c84b1a; color: #fff; font-weight: 600; font-size: 15px; padding: 16px 32px; border-radius: 100px; text-decoration: none; }
   a.btn:hover { background: #a83a10; }
   @media (max-width: 768px) { nav, main { padding-left: 20px; padding-right: 20px; } }
-</style></head>
+</style><script src="/tracking.js" defer></script>
+</head>
 <body>
 <nav><a href="/" class="logo">FMS<span>.</span></a></nav>
 <main>
