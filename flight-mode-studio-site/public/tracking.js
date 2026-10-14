@@ -5,14 +5,15 @@
 // the Calendly pop-up still works and nothing is sent to Google.
 (function () {
   var CONFIG = {
-    callBooked: "",    // e.g. "AW-123456789/AbCdEfGhIj"
-    planPurchased: "", // e.g. "AW-123456789/KlMnOpQrSt"
+    tagId: "AW-18498286406", // Flight Mode Studio Google Ads account
+    callBooked: "",    // e.g. "AW-18498286406/AbCdEfGhIj"
+    planPurchased: "", // e.g. "AW-18498286406/KlMnOpQrSt"
   };
 
   // Plan prices in rand, matching app/api/checkout/route.ts.
   var PLAN_VALUES = { starter: 3000, growth: 6000, scale: 10000 };
 
-  var tagId = (CONFIG.callBooked || CONFIG.planPurchased).split("/")[0];
+  var tagId = CONFIG.tagId;
 
   // Google tag
   window.dataLayer = window.dataLayer || [];
