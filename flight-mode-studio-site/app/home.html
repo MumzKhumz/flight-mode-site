@@ -131,7 +131,8 @@
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(90deg, rgba(26,74,58,0.92) 0%, rgba(26,74,58,0.72) 34%, rgba(26,74,58,0.12) 66%, rgba(26,74,58,0) 100%),
+      linear-gradient(rgba(26,74,58,0.45), rgba(26,74,58,0.45)),
+      linear-gradient(90deg, rgba(10,10,10,0.35) 0%, rgba(10,10,10,0.15) 45%, transparent 70%),
       linear-gradient(0deg, rgba(10,10,10,0.5) 0%, transparent 30%);
   }
 
@@ -201,6 +202,8 @@
     max-width: 900px;
     margin-bottom: 20px;
   }
+
+  .hero h1, .hero-sub, .hero-label, .trust-pill { text-shadow: 0 1px 18px rgba(0,0,0,0.45); }
 
   .hero h1 em {
     font-style: italic;
@@ -819,7 +822,9 @@
     .hero { padding: 100px 20px 96px; }
     .hero-media video { object-position: 70% center; }
     .hero-media::after {
-      background: linear-gradient(0deg, rgba(26,74,58,0.95) 0%, rgba(26,74,58,0.82) 55%, rgba(26,74,58,0.72) 78%, rgba(26,74,58,0.25) 100%);
+      background:
+        linear-gradient(rgba(26,74,58,0.45), rgba(26,74,58,0.45)),
+        linear-gradient(0deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.35) 60%, rgba(10,10,10,0.1) 100%);
     }
     .hero-credit { left: 20px; right: auto; bottom: 24px; }
     .why-inner, .steps-grid, .features-grid, .pricing-grid, .faq-grid {
