@@ -18,9 +18,9 @@ export async function GET(req: NextRequest) {
   const secretKey = process.env.YOCO_SECRET_KEY;
   const origin = req.nextUrl.origin;
 
-  // An unknown plan goes back to the pricing section.
+  // An unknown plan goes back to the plans page.
   if (!plan) {
-    return NextResponse.redirect(new URL("/#pricing", origin), 303);
+    return NextResponse.redirect(new URL("/pricing/#pricing", origin), 303);
   }
 
   const failed = NextResponse.redirect(new URL("/payment/failed/", origin), 303);
@@ -43,7 +43,7 @@ export async function GET(req: NextRequest) {
         currency: "ZAR",
         // plan and ref let the success page report the sale to Google Ads once.
         successUrl: `${origin}/payment/success/?plan=${planKey}&ref=${crypto.randomUUID()}`,
-        cancelUrl: `${origin}/#pricing`,
+        cancelUrl: `${origin}/pricing/#pricing`,
         failureUrl: `${origin}/payment/failed/`,
         metadata: { plan: plan.name },
         lineItems: [

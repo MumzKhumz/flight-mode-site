@@ -834,6 +834,7 @@
     footer { padding: 24px 20px; }
   }
 </style>
+<script>if(location.hash==="#pricing")location.replace("/pricing/"+location.search+"#pricing");</script>
 <script src="/tracking.js" defer></script>
 </head>
 <body>
@@ -843,7 +844,6 @@
   <div class="nav-logo">FMS<span>.</span></div>
   <ul class="nav-links">
     <li><a href="#how-it-works">How it works</a></li>
-    <li><a href="#pricing">Pricing</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="/work/">Work</a></li>
     <li><a href="https://calendly.com/fms-meet" class="nav-cta">Get content</a></li>
@@ -860,8 +860,8 @@
   <h1>Big brand content,<br>small business <em>pricing.</em></h1>
   <p class="hero-sub">High-quality short-form videos for small businesses and growing brands — delivered every month using AI-powered production.</p>
   <div class="hero-actions">
-    <a href="#pricing" class="btn-primary">View plans →</a>
-    <a href="https://calendly.com/fms-meet" class="btn-ghost">Book a free call</a>
+    <a href="https://calendly.com/fms-meet" class="btn-primary">Book a free call →</a>
+    <a href="/work/" class="btn-ghost">See our work</a>
   </div>
   <div class="hero-trust">
     <div class="trust-pill">No big shoots</div>
@@ -1019,75 +1019,6 @@
         <p>AI-assisted, edited and quality-checked by humans. The best of both worlds.</p>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- PRICING -->
-<section class="pricing" id="pricing">
-  <div class="max-w">
-    <span class="section-tag">Pricing</span>
-    <h2>Simple monthly plans.</h2>
-    <p class="pricing-sub">Start small, stay consistent, scale when you are ready.</p>
-    <div class="pricing-grid">
-
-      <!-- Starter -->
-      <div class="plan">
-        <div class="plan-name">Starter</div>
-        <div class="plan-tagline">Best for getting consistent</div>
-        <div class="plan-price">R3,000<span>/mo</span></div>
-        <div class="plan-videos">1 video per month</div>
-        <ul class="plan-features">
-          <li>AI-powered production</li>
-          <li>Human-edited final cut</li>
-          <li>3–5 day delivery</li>
-          <li>Basic revisions</li>
-        </ul>
-        <a href="/api/checkout/?plan=starter" class="plan-btn plan-btn-outline">Choose Starter</a>
-      </div>
-
-      <!-- Growth -->
-      <div class="plan featured">
-        <div class="popular-badge">Most popular</div>
-        <div class="plan-name">Growth</div>
-        <div class="plan-tagline">Most popular for growing brands</div>
-        <div class="plan-price">R6,000<span>/mo</span></div>
-        <div class="plan-videos">3 videos per month</div>
-        <ul class="plan-features">
-          <li>Social + ad-ready videos</li>
-          <li>Priority turnaround</li>
-          <li>Performance-focused edits</li>
-          <li>Creative direction included</li>
-        </ul>
-        <a href="/api/checkout/?plan=growth" class="plan-btn plan-btn-filled">Choose Growth</a>
-      </div>
-
-      <!-- Scale -->
-      <div class="plan">
-        <div class="plan-name">Scale</div>
-        <div class="plan-tagline">For brands ready to push volume</div>
-        <div class="plan-price">R10,000<span>/mo</span></div>
-        <div class="plan-videos">6 videos per month</div>
-        <ul class="plan-features">
-          <li>Advanced edits + variations</li>
-          <li>Fastest turnaround</li>
-          <li>Campaign-ready creatives</li>
-          <li>Monthly creative planning</li>
-        </ul>
-        <a href="/api/checkout/?plan=scale" class="plan-btn plan-btn-outline">Choose Scale</a>
-      </div>
-
-    </div>
-
-    <!-- Campaign card -->
-    <div class="campaign-card">
-      <div class="campaign-left">
-        <h3>Need a launch push?</h3>
-        <p>Campaign bursts available for product drops, paid ads, launches, and seasonal content.</p>
-      </div>
-      <div class="campaign-price">R30k – R60k</div>
-      <a href="https://calendly.com/fms-meet" class="btn-primary">Talk to us →</a>
-    </div>
-
   </div>
 </section>
 

@@ -8,7 +8,7 @@ export function GET() {
       "Payment didn't go through",
       "That payment <em>didn't go through.</em>",
       "Nothing was charged. You can try again, or email hello@flightmodestudio.co.za and we'll sort it out.",
-      { href: "/#pricing", label: "Back to plans" },
+      { href: "/pricing/#pricing", label: "Back to plans" },
     ),
   );
 }
